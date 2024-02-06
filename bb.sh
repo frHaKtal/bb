@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ###ajouter un scan rustscan => rustscan -a 10.10.253.28 --ulimit 5000 -- -A
-github_key="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"
+github_key=""
 
 vuln_scan() {
 
