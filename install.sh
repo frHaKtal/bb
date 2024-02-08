@@ -14,10 +14,10 @@ sudo python3 setup.py install
 cd -
 
 # Installer GoSpider
-GO111MODULE=on go get -u github.com/jaeles-project/gospider
+GO111MODULE=on go install github.com/jaeles-project/gospider@latest
 
 # Installer Hakrawler
-GO111MODULE=on go get github.com/hakluke/hakrawler
+GO111MODULE=on go install github.com/hakluke/hakrawler@latest
 
 # Installer SubDomainizer
 git clone https://github.com/nsonaniya2010/SubDomainizer.git tools/SubDomainizer
@@ -29,16 +29,16 @@ python3 setup.py install
 cd -
 
 # Installer Gau
-GO111MODULE=on go get -u github.com/lc/gau
+GO111MODULE=on go install github.com/lc/gau@latest
 
 # Installer Waybackurls
-GO111MODULE=on go get github.com/tomnomnom/waybackurls
+GO111MODULE=on go install github.com/tomnomnom/waybackurls@latest
 
 # Installer Naabu
-GO111MODULE=on go get -u github.com/projectdiscovery/naabu/cmd/naabu
+GO111MODULE=on go install github.com/projectdiscovery/naabu/cmd/naabu@latest
 
 # Installer Assetfinder
-go get -u github.com/tomnomnom/assetfinder
+go install github.com/tomnomnom/assetfinder@latest
 
 # Installer Sublist3r
 git clone https://github.com/aboul3la/Sublist3r.git tools/Sublist3r
@@ -47,25 +47,25 @@ git clone https://github.com/aboul3la/Sublist3r.git tools/Sublist3r
 git clone https://github.com/UnaPibaGeek/ctfr.git tools/ctfr
 
 # Installer tlsx
-go get -u github.com/subfinder/tlsx
+go install github.com/subfinder/tlsx@latest
 
 # Installer GetSubdomain
-go get -u github.com/monkeym4ster/GetSubdomain
+go install github.com/monkeym4ster/GetSubdomain@latest
 
 # Installer Shosubgo
-GO111MODULE=on go get -u github.com/incogbyte/shosubgo/cmd/shosubgo
+GO111MODULE=on go install github.com/incogbyte/shosubgo/cmd/shosubgo@latest
 
 # Installer Subfinder
-GO111MODULE=on go get -u github.com/projectdiscovery/subfinder/v2/cmd/subfinder
+GO111MODULE=on go install github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
 
 # Cloner le script Github Search
 git clone https://github.com/gwen001/github-search.git tools/github-search
 
 # Installer Shuffledns
-GO111MODULE=on go get -u github.com/projectdiscovery/shuffledns/cmd/shuffledns
+GO111MODULE=on go install github.com/projectdiscovery/shuffledns/cmd/shuffledns@latest
 
 # Installer Aquatone
-go get github.com/michenriksen/aquatone
+go install github.com/michenriksen/aquatone@latest
 
 # Installer Firefox (si ce n'est pas déjà installé)
 sudo apt install -y firefox
