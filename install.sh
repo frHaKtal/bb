@@ -3,9 +3,18 @@
 # Créer le répertoire tools/ s'il n'existe pas
 mkdir -p tools
 
+# Installer rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
 # Installer les dépendances nécessaires
 sudo apt update
 sudo apt install -y python3 python3-pip git
+
+# Installer rustscan
+git clone https://github.com/RustScan/RustScan.git tools/RustScan
+cd RustScan
+cargo build --release
+sudo cp target/release/rustscan /usr/local/bin/
 
 # Installer OneForAll
 git clone https://github.com/shmilylty/OneForAll.git tools/OneForAll
