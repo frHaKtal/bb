@@ -13,6 +13,9 @@ cd tools/OneForAll
 sudo python3 setup.py install
 cd -
 
+# Installer Uniq
+sudo apt-get install coreutils
+
 # Installer GoSpider
 GO111MODULE=on go install github.com/jaeles-project/gospider@latest
 
