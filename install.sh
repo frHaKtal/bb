@@ -10,6 +10,10 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 sudo apt update
 sudo apt install -y python3 python3-pip git
 
+# Installer Paramspider
+git clone https://github.com/devanshbatham/paramspider tools/paramspider
+cd tools/paramspider;python3 setup.py install;cd ../..
+
 # Installer rustscan
 git clone https://github.com/RustScan/RustScan.git tools/RustScan
 cd RustScan
