@@ -2,6 +2,7 @@
 
 ###ajouter un scan rustscan => rustscan -a 10.10.253.28 --ulimit 5000 -- -A
 github_key=""
+shosubgo_key=""
 
 vuln_scan() {
 
@@ -140,7 +141,7 @@ subdomain_discovery() {
             echo -e "[●]""\E[31m Subdomain Scanned  -  [gau✔]\E[0m"
             tools/getsubdomain "$subdomain" >> subdomain.txt
             echo -e "[●]""\E[31m Subdomain Scanned  -  [getsubdomain✔]\E[0m"
-            tools/shosubgo -d "$subdomain" -s 0ZRNnWDIgXCPmRAHoVb2smfVQzAeNgkm >> subdomain.txt
+            tools/shosubgo -d "$subdomain" -s "$shosubgo_key" >> subdomain.txt
             echo -e "[●]""\E[31m Subdomain Scanned  -  [shosubgo✔]\E[0m"
             tools/subfinder -d "$subdomain" -nc -timeout 5 -t 30 -silent -all >> subdomain.txt
             echo -e "[●]""\E[31m Subdomain Scanned  -  [subfinder✔]\E[0m"
