@@ -1,95 +1,87 @@
 #!/bin/bash
 
-# Créer le répertoire tools/ s'il n'existe pas
-mkdir -p tools
+install_tools() {
 
-# Installer rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    mkdir -p tools
 
-# Installer les dépendances nécessaires
-sudo apt update
-sudo apt install -y python3 python3-pip git
+    # Install OneForAll
+    git clone https://github.com/shmilylty/OneForAll.git tools/OneForAll
+    cd tools/OneForAll
+    pip3 install -r requirements.txt
+    cd ../
 
-# Installer Paramspider
-git clone https://github.com/devanshbatham/paramspider tools/paramspider
-cd tools/paramspider;python3 setup.py install;cd ../..
+    # Install dnsx
+    GO111MODULE=on go get -u -v github.com/projectdiscovery/dnsx/cmd/dnsx
 
-# Installer rustscan
-git clone https://github.com/RustScan/RustScan.git tools/RustScan
-cd RustScan
-cargo build --release
-sudo cp target/release/rustscan /usr/local/bin/
+    # Install Naabu
+    GO111MODULE=on go get -u -v github.com/projectdiscovery/naabu/v2/cmd/naabu
 
-# Installer OneForAll
-git clone https://github.com/shmilylty/OneForAll.git tools/OneForAll
-cd tools/OneForAll
-sudo python3 setup.py install
-cd -
+    # Install gospider
+    go get -u github.com/jaeles-project/gospider
 
-# Installer Uniq
-sudo apt-get install coreutils
+    # Install Hakrawler
+    go get github.com/hakluke/hakrawler
 
-# Installer GoSpider
-GO111MODULE=on go install github.com/jaeles-project/gospider@latest
+    # Install SubDomainizer
+    git clone https://github.com/nsonaniya2010/SubDomainizer.git tools/SubDomainizer
 
-# Installer Hakrawler
-GO111MODULE=on go install github.com/hakluke/hakrawler@latest
+    # Install LinkFinder
+    git clone https://github.com/GerbenJavado/LinkFinder.git tools/LinkFinder
+    pip3 install -r tools/LinkFinder/requirements.txt
 
-# Installer SubDomainizer
-git clone https://github.com/nsonaniya2010/SubDomainizer.git tools/SubDomainizer
+    # Install Gau
+    go get -u github.com/lc/gau
 
-# Installer LinkFinder
-git clone https://github.com/GerbenJavado/LinkFinder.git tools/LinkFinder
-cd tools/LinkFinder
-python3 setup.py install
-cd -
+    # Install Waybackurls
+    go get -u github.com/tomnomnom/waybackurls
 
-# Installer Gau
-GO111MODULE=on go install github.com/lc/gau@latest
+    # Install Rustscan
+    mkdir -p tools/rustscan
+    wget https://github.com/RustScan/RustScan/releases/download/2.0.0/rustscan_2.0.0_amd64.deb -O tools/rustscan/rustscan_2.0.0_amd64.deb
+    sudo dpkg -i tools/rustscan/rustscan_2.0.0_amd64.deb
 
-# Installer Waybackurls
-GO111MODULE=on go install github.com/tomnomnom/waybackurls@latest
+    # Install Ffuf
+    go get -u github.com/ffuf/ffuf
 
-# Installer Naabu
-GO111MODULE=on go install github.com/projectdiscovery/naabu/cmd/naabu@latest
+    # Install Aquatone
+    go get github.com/michenriksen/aquatone
 
-# Installer Assetfinder
-go install github.com/tomnomnom/assetfinder@latest
+    # Install assetfinder
+    go get -u github.com/tomnomnom/assetfinder
 
-# Installer Sublist3r
-git clone https://github.com/aboul3la/Sublist3r.git tools/Sublist3r
+    # Install getsubdomain
+    git clone https://github.com/aboul3la/Sublist3r.git tools/Sublist3r
 
-# Installer CTFR
-git clone https://github.com/UnaPibaGeek/ctfr.git tools/ctfr
+    # Install shosubgo
+    go get -u github.com/netevert/shosubgo
 
-# Installer tlsx
-go install github.com/subfinder/tlsx@latest
+    # Install shuffledns
+    GO111MODULE=on go get -v github.com/projectdiscovery/shuffledns/cmd/shuffledns
 
-# Installer GetSubdomain
-go install github.com/monkeym4ster/GetSubdomain@latest
+    # Install Subfinder
+    GO111MODULE=on go get -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder
 
-# Installer Shosubgo
-GO111MODULE=on go install github.com/incogbyte/shosubgo/cmd/shosubgo@latest
+    # Install github-subdomains
+    git clone https://github.com/gwen001/github-search.git tools/github-search
 
-# Installer Subfinder
-GO111MODULE=on go install github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
+    # Install tlsx
+    go get -u github.com/tomnomnom/tlsx
 
-# Cloner le script Github Search
-git clone https://github.com/gwen001/github-search.git tools/github-search
+    # Install httpx
+    go get -u github.com/projectdiscovery/httpx/cmd/httpx
 
-# Installer Shuffledns
-GO111MODULE=on go install github.com/projectdiscovery/shuffledns/cmd/shuffledns@latest
+    # Install netlas
+    go get -u github.com/netlase/netlas/cmd/netlas
 
-# Installer Aquatone
-go install github.com/michenriksen/aquatone@latest
+    # Install sponge
+    sudo apt -y install moreutils
 
-# Installer Firefox (si ce n'est pas déjà installé)
-sudo apt install -y firefox
+    # Install urldedupe
+    git clone https://github.com/P1kachu/urldedupe.git tools/urldedupe
+    cd tools/urldedupe
+    make
+    cd ../../
 
-# Télécharger le fichier fuzzz.txt pour ffuf
-wget https://raw.githubusercontent.com/ffuf/ffuf/master/wordlists/directory-list-2.3-small.txt -O tools/fuzzz.txt
+}
 
-# Assurer les permissions
-chmod +x tools/*
-
-echo "Installation terminée!"
+install_tools
